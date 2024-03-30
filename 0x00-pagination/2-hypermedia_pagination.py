@@ -45,7 +45,7 @@ class Server:
         return self.__dataset[pagination[0]: pagination[1]]
 
     def get_hyper(self, page: int = 1, page_size: int = 10
-    ) -> Dict[str, Union[int, List[str], None]]:
+                  ) -> Dict[str, Union[int, List[str], None]]:
         """Returns a dictionary for hypermedia pagination"""
         hyper = {"page_size": page_size, "page": page}
         hyper.update({"data": self.get_page(page, page_size)})
