@@ -44,5 +44,20 @@ class Server:
         function ensures that the user gets the correct page of data even
         if some rows have been removed from the dataset between queries
         """
-        # will implement later ...
-        pass
+        assert isinstance(index, int) and isinstance(page_size, int)
+        assert index >= 0 and page_size > 0
+        indexed_dataset = self.indexed_dataset()
+        assert index < len(indexed_dataset)
+        data = []
+        next_index = index
+        for _ in range(page_size):
+            while not indexed_dataset.get(next_index):
+                next_index += 1
+            data.append(indexed_dataset[next_index])
+            next_index += 1
+        return {
+            'index': index,
+            'next_index': next_index,
+            'page_size': len(data),
+            'data': data
+        }
