@@ -15,24 +15,25 @@ class LRUCache(BaseCaching):
         self.cache_data_time = {}
 
     def put(self, key, item):
-        """assigns or puts an item in the cache"""
+        """Add an item in the cache
+        """
         if key is None or item is None:
             return
-        self.cache_data.update({key: item})
-
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS \
+        if len(self.cache_data) == BaseCaching.MAX_ITEMS \
                 and key not in self.cache_data.keys():
-            removed_key = min(self.cache_data_time,
-                              key=self.cache_data_time.get)
-            del self.cache_data_time[removed_key]
-            del self.cache_data[removed_key]
-            print("DISCARD: {}".format(removed_key))
+            removed_item = min(self.cache_data_time,
+                               key=self.cache_data_time.get)
+
+            del self.cache_data_time[removed_item]
+            del self.cache_data[removed_item]
+            print(f"DISCARD: {removed_item}")
 
         self.cache_data.update({key: item})
         self.cache_data_time.update({key: datetime.today()})
 
     def get(self, key):
-        """Get an item by key"""
+        """Get an item in the cache
+        """
         if self.cache_data.get(key) is None:
             return
         self.cache_data_time.update({key: datetime.today()})
