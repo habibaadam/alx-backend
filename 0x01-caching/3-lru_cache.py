@@ -7,7 +7,7 @@ from datetime import datetime
 
 
 class LRUCache(BaseCaching):
-    """class for fifo caching"""
+    """class for lru caching"""
 
     def __init__(self):
         """initializes the class"""
@@ -20,7 +20,7 @@ class LRUCache(BaseCaching):
             return
         self.cache_data.update({key: item})
 
-        if len(self.cache_data) == BaseCaching.MAX_ITEMS \
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS \
                 and key not in self.cache_data.keys():
             removed_key = min(self.cache_data_time,
                               key=self.cache_data_time.get)
