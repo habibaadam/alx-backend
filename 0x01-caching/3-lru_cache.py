@@ -33,5 +33,7 @@ class LRUCache(BaseCaching):
 
     def get(self, key):
         """Get an item by key"""
+        if self.cache_data.get(key) is None:
+            return
         self.cache_data_time.update({key: datetime.today()})
         return self.cache_data.get(key)
