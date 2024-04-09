@@ -42,5 +42,8 @@ def hello_world():
     """Method that renders a template"""
     home_title = _("Welcome to Holberton")
     home_header = _("Hello world")
-    return render_template("4-index.html", title=home_title,
-                           header=home_header)
+    return render_template("4-index.html")
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
