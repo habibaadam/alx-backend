@@ -40,8 +40,6 @@ def get_locale():
 @app.route('/')
 def hello_world():
     """Method that renders a template"""
-    home_title = _("Welcome to Holberton")
-    home_header = _("Hello world")
     return render_template("4-index.html")
 
 
