@@ -6,3 +6,18 @@
 
 # Ignore pycache
 *__pycache__
+
+# Ignore node modules
+
+*/node_modules
+
+# Ignore package.json
+
+package.json
+
+# Ignore babel config
+*.babelrc
+
+# Ignore package-lock
+
+package-lock.json
